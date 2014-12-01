@@ -1,13 +1,13 @@
 
 
-labels = ["Sony", "Warner", "Epic", "MCA", "Fox", "Play"]
+labels = %w(Sony Warner Epic MCA Fox Play)
 prices = {
-  "sony" => "5495",
-  "warner" => "5995",
-  "epic" => "3295",
-  "mca" => "4745",
-  "fox" => "3615",
-  "play" => "2790"
+  sony: 5495,
+  warner: 5995,
+  epic: 3295,
+  mca: 4745,
+  fox: 3615,
+  play: 2790
 }
 
 puts prices
@@ -19,7 +19,7 @@ puts   '╔════╦═══════════╦══════
 puts   "║ No ║ Label\t ║ Price/month\t ║"
 labels.each_with_index do |item,index|
   puts '╠════╬═══════════╬═══════════════╣'
-  puts "║ #{index+1}  ║ #{item}\t ║ $#{prices[item.downcase].to_f.round(2)/100}\t ║"
+  puts "║ #{index+1}  ║ #{item}\t ║ $#{prices[item.downcase.to_sym].to_f.round(2)/100}\t ║"
 end
 puts   '╚════╩═══════════╩═══════════════╝'
 puts
@@ -29,7 +29,7 @@ labelSelection = gets.chomp.strip.to_i - 1
 puts
 
 label = labels[labelSelection]
-price = prices[label.downcase]
+price = prices[label.downcase.to_sym]
 
 print 'Choose period in months: '
 period = gets.chomp.strip.to_i
