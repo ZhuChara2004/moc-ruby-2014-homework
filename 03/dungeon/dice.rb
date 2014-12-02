@@ -1,11 +1,9 @@
 class RollDice
 
-  def d20
-    rand(20)+1
-  end
+  types = [4, 6, 8, 10, 12, 20]
 
-  def d6
-    rand(6)+1
+  types.each do |t|
+    define_method("d#{t}") { rand(t)+1 }
   end
 
 end
