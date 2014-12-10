@@ -2,7 +2,6 @@
 require './dice'
 
 
-
 dice = RollDice.new
 
 rolls = []
