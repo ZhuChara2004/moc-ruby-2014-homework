@@ -2,17 +2,10 @@ require './generate_json'
 
 RESPONSE = GenerateJson.new.generate
 
-response = JSON.parse(RESPONSE)
+parse = JSON.parse(RESPONSE)
 
+Struct.new('Person', *parse['person'].keys.collect(&:to_sym))
 
-if response.key?("person")
+person = Struct::Person.new(*parse['person'].values)
 
-  p response["person"].keys
-
-  Struct.new("Person", *response["person"].keys.collect(&:to_sym))
-
-  person2 = Struct::Person.new(*response["person"].values)
-
-  p person2.inspect
-
-end
+puts person.inspect
